@@ -1,0 +1,18 @@
+apiVersion: dapr.io/v1alpha1
+kind: Component
+metadata:
+  name: pubsub
+spec:
+  type: pubsub.redis
+  version: v1
+  metadata:
+  - name: redisHost
+    value: dapr-dev-redis-master:6379
+  - name: redisPassword
+    secretKeyRef:
+      name: dapr-dev-redis
+      key: redis-password
+  - name: allowedTopics
+    value: "topic1,topic2,topic3"
+auth:
+  secretStore: kubernetes

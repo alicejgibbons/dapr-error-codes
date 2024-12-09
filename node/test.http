@@ -1,0 +1,41 @@
+@node_local = http://localhost:3000
+@node_local_dapr = http://localhost:3600
+
+## Get key from state store
+GET {{node_local}}/order/2
+Accept: application/json
+
+### Save message via output binding
+POST {{node_local}}/binding
+Content-Type: application/json
+
+{
+  "bindingName": "order-binding",
+  "message":"Hello from Dapr Binding!"
+}
+
+### Query state in state store
+POST {{node_local}}/query
+Content-Type: application/json
+
+{
+  "query": "SELECT var1, var2, var3 from myTable LIMIT 10"
+}
+
+### Try pubsub
+POST {{node_local}}/publish
+Content-Type: application/json
+
+{
+  "topic": "topic4",
+  "message":"Hello from Dapr Pubsub!"
+}
+
+# ### Save state in state store
+# POST {{node_local}}/order
+# Content-Type: application/json
+
+# {
+#   "key": "1",
+#   "value": "order1 data"
+# }

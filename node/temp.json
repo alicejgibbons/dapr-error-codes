@@ -1,0 +1,5 @@
+Error: {
+  "error": "Bad Request",
+  "error_msg": "{\"errorCode\":\"ERR_STATE_STORE_NOT_FOUND\",\"message\":\"state store statestore-und is not found\",\"details\":[{\"@type\":\"type.googleapis.com/google.rpc.ErrorInfo\",\"domain\":\"dapr.io\",\"metadata\":{\"appID\":\"node-app\"},\"reason\":\"DAPR_STATE_NOT_FOUND\"}]}",
+  "status": 400
+}

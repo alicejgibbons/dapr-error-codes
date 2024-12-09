@@ -1,0 +1,16 @@
+apiVersion: dapr.io/v1alpha1
+kind: Configuration
+metadata:
+  name: config
+spec:
+  metrics:
+    enabled: true
+    recordErrorCodes: true
+  # api:
+  #   denied:
+  #     - name: publish
+  #       version: v1.0
+  #       protocol: grpc
+  #     - name: publish
+  #       version: v1.0
+  #       protocol: http
