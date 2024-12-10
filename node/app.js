@@ -26,7 +26,7 @@ const daprHost = process.env.DAPR_HOST ?? "localhost";
 const stateStoreName = process.env.STATE_STORE_NAME ?? "statestore-und";
 const queryStateStoreName = process.env.STATE_STORE_NAME ?? "statestore-im";
 const pubSubName = process.env.PUBSUB_NAME ?? "pubsub";
-let port = process.env.APP_PORT ?? "4000";
+let port = process.env.APP_PORT ?? "3000";
 
 let daprPort;
 switch (communicationProtocol) {
