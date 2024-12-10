@@ -2,7 +2,7 @@
 @node_local_dapr = http://localhost:3600
 
 ## Get key from state store
-GET {{node_local}}/order/2
+GET {{node_local}}/order/1
 Accept: application/json
 
 ### Save message via output binding
@@ -31,11 +31,11 @@ Content-Type: application/json
   "message":"Hello from Dapr Pubsub!"
 }
 
-# ### Save state in state store
-# POST {{node_local}}/order
-# Content-Type: application/json
+### Save state in state store
+POST {{node_local}}/order
+Content-Type: application/json
 
-# {
-#   "key": "1",
-#   "value": "order1 data"
-# }
+{
+  "key": "1",
+  "value": "order1 data"
+}

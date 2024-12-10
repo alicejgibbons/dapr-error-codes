@@ -13,7 +13,7 @@ build-image:
 run:
 	@echo "Running service with Dapr..."
 	npm install
-	export DAPR_PROTOCOL=http
+	export DAPR_PROTOCOL=grpc
 	export DAPR_HTTP_PORT="3600"
 	export DAPR_GRPC_PORT="3610"
 
@@ -23,6 +23,7 @@ run:
 		--dapr-http-port 3600 \
 		--dapr-grpc-port 3610 \
 		--log-level debug \
+		--app-protocol grpc \
 		--config ../resources/config.yaml \
 		--resources-path ../resources \
 		-- node app.js

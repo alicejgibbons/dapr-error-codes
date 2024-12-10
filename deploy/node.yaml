@@ -33,7 +33,6 @@ spec:
         dapr.io/enabled: "true"
         dapr.io/app-id: "nodeapp"
         dapr.io/app-port: "3000"
-        dapr.io/enable-api-logging: "true"
         dapr.io/log-level: "debug"
         dapr.io/config: "config"
     spec:

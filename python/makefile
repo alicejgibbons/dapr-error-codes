@@ -24,7 +24,7 @@ run:
 		--log-level debug \
 		--config ../resources/config.yaml \
 		--resources-path ../resources \
-		-- python app.py
+		-- ./venv/bin/python app.py
 
 .PHONY: clean
 clean:

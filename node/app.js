@@ -22,10 +22,6 @@ const communicationProtocol =
     : CommunicationProtocolEnum.HTTP;
 
 const daprHost = process.env.DAPR_HOST ?? "localhost";
-
-const stateStoreName = process.env.STATE_STORE_NAME ?? "statestore-und";
-const queryStateStoreName = process.env.STATE_STORE_NAME ?? "statestore-im";
-const pubSubName = process.env.PUBSUB_NAME ?? "pubsub";
 let port = process.env.APP_PORT ?? "3000";
 
 let daprPort;
@@ -51,9 +47,9 @@ const daprClient = new DaprClient(
 
 const app = express();
 app.use(bodyParser.json());
-//app.use(express.json());
 
-// Get state in Dapr
+const stateStoreName = process.env.STATE_STORE_NAME ?? "statestoree";
+// Get Dapr state
 app.get("/order/:orderId", async (req, res) => {
   try {
     console.log(`Getting state with client, order id: ${req.params.orderId}`);
@@ -69,7 +65,7 @@ app.get("/order/:orderId", async (req, res) => {
   }
 });
 
-// Dapr Binding
+// Invoke Dapr Binding
 app.post("/binding", async (req, res) => {
   const bindingOperation = "create";
   const { bindingName, message } = req.body;
@@ -88,6 +84,8 @@ app.post("/binding", async (req, res) => {
   }
 });
 
+const queryStateStoreName = process.env.STATE_STORE_NAME ?? "statestore-im";
+
 // Querying state in Dapr
 app.post("/query", async (req, res) => {
   const { query } = req.body;
@@ -101,6 +99,8 @@ app.post("/query", async (req, res) => {
     return res.status(500).send(error.message);
   }
 });
+
+const pubSubName = process.env.PUBSUB_NAME ?? "pubsub";
 
 // Dapr Publish/Subscribe
 app.post("/publish", async (req, res) => {
@@ -116,6 +116,13 @@ app.post("/publish", async (req, res) => {
   }
   return res.send(`Message published to ${topic}`);
 });
+
+
+
+
+
+
+
 
 // Save state in Dapr
 app.post("/order", async (req, res) => {
